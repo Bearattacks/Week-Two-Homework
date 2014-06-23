@@ -7,13 +7,27 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "FeedViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
+    LoginViewController *vc = [[LoginViewController alloc] init];
+    
+    UINavigationController *NavigationController = [[UINavigationController alloc] initWithRootViewController:vc];
+    [NavigationController setNavigationBarHidden:YES animated:YES];
+    
+
+    
+    // This is temporary until nav controller is ready
+    self.window.rootViewController = NavigationController;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
