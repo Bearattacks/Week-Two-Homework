@@ -77,21 +77,17 @@
 }
 
 - (IBAction)emailFieldFocus:(id)sender {
-    self.emailField.autocorrectionType = NO;
-    if (self.isKeyboardUp == NO) {
-        self.isKeyboardUp = YES;
-        NSLog(@"Keyboard is up");
-        [UIView animateWithDuration:0.25  animations:^{
-            self.loginContainerView.frame = CGRectMake(self.loginContainerView.frame.origin.x, self.loginContainerView.frame.origin.y - 70, self.loginContainerView.frame.size.width, self.loginContainerView.frame.size.height);
-        }];
-    }
+    [self displayKeyboard];
 }
 
 - (IBAction)passwordFieldFocus:(id)sender {
+    [self displayKeyboard];
+}
+
+- (void)displayKeyboard {
     self.passwordField.autocorrectionType = NO;
     if (self.isKeyboardUp == NO) {
         self.isKeyboardUp = YES;
-        NSLog(@"Keyboard is up");
         [UIView animateWithDuration:0.25  animations:^{
             self.loginContainerView.frame = CGRectMake(self.loginContainerView.frame.origin.x, self.loginContainerView.frame.origin.y - 70, self.loginContainerView.frame.size.width, self.loginContainerView.frame.size.height);
         }];
@@ -137,13 +133,23 @@
         MoreViewController *viewFive = [[MoreViewController alloc] init];
         
         UITabBarController *tabBarController = [[UITabBarController alloc] init];
-        tabBarController.viewControllers = @[viewOne, viewTwo, viewThree, viewFour, viewFive];
+        tabBarController.tabBar.backgroundColor = [[UIColor alloc] initWithRed:1.00 green:1.00 blue:1.00 alpha:1.0];
         viewOne.tabBarItem.title = @"News Feed";
+        viewOne.tabBarItem.image = [UIImage imageNamed:@"tabFeed.png"];
+
         viewTwo.tabBarItem.title = @"People";
-        viewThree.tabBarItem.title = @"Messenger";
-        viewFour.tabBarItem.title = @"Notifications";
-        viewFive.tabBarItem.title = @"More";
+        viewTwo.tabBarItem.image = [UIImage imageNamed:@"tabPeople.png"];
         
+        viewThree.tabBarItem.title = @"Messenger";
+        viewThree.tabBarItem.image = [UIImage imageNamed:@"tabMessenger.png"];
+
+        viewFour.tabBarItem.title = @"Notifications";
+        viewFour.tabBarItem.image = [UIImage imageNamed:@"tabNotifications.png"];
+
+        viewFive.tabBarItem.title = @"More";
+        viewFive.tabBarItem.image = [UIImage imageNamed:@"tabMore.png"];
+        tabBarController.viewControllers = @[viewOne, viewTwo, viewThree, viewFour, viewFive];
+
         [self presentViewController:tabBarController animated:YES completion:nil];
 
     

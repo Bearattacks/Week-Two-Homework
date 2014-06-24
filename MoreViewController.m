@@ -9,6 +9,7 @@
 #import "MoreViewController.h"
 
 @interface MoreViewController ()
+@property (weak, nonatomic) IBOutlet UIView *headerBar;
 
 @end
 
@@ -27,6 +28,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    UIImage *more = [UIImage imageNamed:@"more"];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 63,  more.size.width, more.size.height)];
+
+    scrollView.contentSize = CGSizeMake(320, 2000);
+
+    UIImageView *moreScrollImage = [[UIImageView alloc] initWithImage:more];
+    [scrollView addSubview:moreScrollImage];
+    [self.view addSubview:scrollView];
+    [self.view bringSubviewToFront:self.headerBar];
+    
 }
 
 - (void)didReceiveMemoryWarning
