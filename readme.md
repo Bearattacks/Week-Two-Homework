@@ -1,4 +1,6 @@
 Time spent this week: 10 hrs
+
+
 ![demo gif](https://raw.githubusercontent.com/Bearattacks/Week-Two-Homework/master/demo.gif?raw=true)
 
 ## login page
